@@ -48,7 +48,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     color: const Color.fromARGB(255, 35, 0, 49),
                     Icons.person),
                   label: Text(
-                    style: TextStyle(color: const Color.fromARGB(255, 4, 0, 253)),"Username"),
+                    style: TextStyle(color: const Color.fromARGB(255, 105, 5, 5)),"Username"),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
