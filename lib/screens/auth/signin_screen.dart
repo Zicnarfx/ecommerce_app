@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/screens/auth/signup_screen.dart';
-import 'package:ecommerce_app/screens/home_screen.dart';
+import 'package:ecommerce_app/screens/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
@@ -20,7 +20,7 @@ class _SigninScreenState extends State<SigninScreen> {
     if (
       _usernameController.text == username && _passwordController.text == password
     ){
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => BottomNav()));
     }
 
     else{
@@ -56,13 +56,7 @@ class _SigninScreenState extends State<SigninScreen> {
             children: [
               // logo
               Image.asset(
-                'assets/images/ecommerceapplogo.png',
-                scale: 1,
-              ),
-
-
-              SizedBox(
-                height: 10,
+                'assets/images/ecommerceapplogo.png', 
               ),
               // text
               Text(
@@ -73,7 +67,8 @@ class _SigninScreenState extends State<SigninScreen> {
 
 
               SizedBox(
-                height: 30,
+                height: 30
+                ,
               ),
               // user textfield
               SizedBox(
@@ -87,7 +82,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   label: Text(
                     style: TextStyle(color: const Color.fromARGB(255, 24, 0, 37)),"Username"),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
                             ),
@@ -108,7 +103,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   label: Text(
                     style: TextStyle(color: const Color.fromARGB(255, 24, 0, 37)),"Password"),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                                ),
                              ),
@@ -116,7 +111,7 @@ class _SigninScreenState extends State<SigninScreen> {
 
 
               SizedBox(
-                height: 50,
+                height: 30,
               ),
 
               // login button
@@ -130,7 +125,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 child: Text(style: TextStyle(fontSize: 16.0,
                 letterSpacing: 3,
                   color: const Color.fromARGB(255, 0, 0, 0)),
-                  "Login"),
+                  "Sign In"),
               ),
             ),
         
