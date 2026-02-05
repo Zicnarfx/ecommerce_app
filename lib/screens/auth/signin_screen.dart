@@ -11,39 +11,36 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
-  final TextEditingController  _usernameController = TextEditingController();
-  final TextEditingController  _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   String username = "admin";
   String password = "password";
 
-  void signin(){
-    if (
-      _usernameController.text == username && _passwordController.text == password
-    ){
+  void signin() {
+    if (_usernameController.text == username &&
+        _passwordController.text == password) {
       Navigator.push(context, MaterialPageRoute(builder: (_) => BottomNav()));
-    }
+    } else {
+      const snackBar = SnackBar(
+        /// need to set following properties for best effect of awesome_snackbar_content
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'On Snap!',
+          message: 'User or password is incorrect',
 
-    else{
-                const snackBar = SnackBar(
-                  /// need to set following properties for best effect of awesome_snackbar_content
-                  elevation: 0,
-                  behavior: SnackBarBehavior.floating,
-                  backgroundColor: Colors.transparent,
-                  content: AwesomeSnackbarContent(
-                    title: 'On Snap!',
-                    message:
-                        'User or password is incorrect',
+          /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
+          contentType: ContentType.failure,
+        ),
+      );
 
-                    /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
-                    contentType: ContentType.failure,
-                  ),
-                );
-
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(snackBar);
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar);
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,96 +52,95 @@ class _SigninScreenState extends State<SigninScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // logo
-              Image.asset(
-                'assets/images/ecommerceapplogo.png', 
-              ),
+              Image.asset('assets/images/ecommerceapplogo.png'),
               // text
               Text(
-                  style: TextStyle(
-                      fontSize: 15.9,
-                      color: Colors.black),
-                  "Welcome Back! Please Login!"),
-
-
-              SizedBox(
-                height: 30
-                ,
+                style: TextStyle(fontSize: 15.9, color: Colors.black),
+                "Welcome Back! Please Login!",
               ),
+
+              SizedBox(height: 30),
               // user textfield
               SizedBox(
                 width: double.infinity,
                 child: TextField(
                   controller: _usernameController,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(
-                    color: const Color.fromARGB(255, 35, 0, 49),
-                    Icons.person),
-                  label: Text(
-                    style: TextStyle(color: const Color.fromARGB(255, 24, 0, 37)),"Username"),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      color: const Color.fromARGB(255, 35, 0, 49),
+                      Icons.person,
+                    ),
+                    label: Text(
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 24, 0, 37),
+                      ),
+                      "Username",
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
                 ),
-                            ),
               ),
 
-
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               // pass textfield
-               SizedBox(
+              SizedBox(
                 width: double.infinity,
-                 child: TextField(
+                child: TextField(
                   controller: _passwordController,
                   obscureText: true,
-                               decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_open_outlined),
-                  label: Text(
-                    style: TextStyle(color: const Color.fromARGB(255, 24, 0, 37)),"Password"),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.lock_open_outlined),
+                    label: Text(
+                      style: TextStyle(
+                        color: const Color.fromARGB(255, 24, 0, 37),
+                      ),
+                      "Password",
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
-                               ),
-                             ),
-               ),
-
-
-              SizedBox(
-                height: 30,
+                ),
               ),
+
+              SizedBox(height: 30),
 
               // login button
-             SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 190, 0, 133)),
-
-                onPressed: signin,
-                child: Text(style: TextStyle(fontSize: 16.0,
-                letterSpacing: 3,
-                  color: const Color.fromARGB(255, 0, 0, 0)),
-                  "Sign In"),
-              ),
-            ),
-        
-
               SizedBox(
-                height: 30,
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 126, 0, 105),
+                  ),
+
+                  onPressed: signin,
+                  child: Text(
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      letterSpacing: 3,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                    ),
+                    "Sign In",
+                  ),
+                ),
               ),
+
+              SizedBox(height: 70),
               // register
-             TextButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SignupScreen()),
-    );
-  },
-  child: const Text(
-    style: TextStyle(fontSize: 20),
-    'Sign Up'),
-)
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignupScreen(),
+                    ),
+                  );
+                },
+                child: const Text(style: TextStyle(fontSize: 20), 'Sign Up'),
+              ),
             ],
           ),
         ),
@@ -152,6 +148,3 @@ class _SigninScreenState extends State<SigninScreen> {
     );
   }
 }
-
-   
-  

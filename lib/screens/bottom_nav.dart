@@ -15,55 +15,49 @@ class _BottomNavState extends State<BottomNav> {
   @override
   int _selectedIndex = 0;
 
+  static final List<Widget> _widgetOptions = [
+    HomeScreen(),
+    ShopScreen(),
+    NotificationScreen(),
+    ProfileScreen(),
+  ];
 
-static final List<Widget> _widgetOptions = [
-  HomeScreen(),
-  ShopScreen(),
-  NotificationScreen(),
-  ProfileScreen(),
-];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
-
-void _onItemTapped(int index){
-  setState(() {
-    _selectedIndex = index;
-  });
-}
   Widget build(BuildContext context) {
     return Scaffold(
-       //body
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
+      //body
+      body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
 
-      
-
-        // bot navi
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          items: [
-          BottomNavigationBarItem(icon: Icon(
-            
-            
-            color: Colors.black,
-            
-            Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(
-            color: Colors.black,
-            
-            Icons.shopping_bag), label: "Shop"),
-          BottomNavigationBarItem(icon: Icon(
-            color: Colors.black,
-            
-            Icons.notifications), label: "Notification"),
-          BottomNavigationBarItem(icon: Icon(
-            color: Colors.black,
-            
-            Icons.person), label: "Profile"),
+      // bot navi
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: "Shop",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_outlined),
+            label: "Notification",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: "Profile",
+          ),
         ],
- currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex,
+        selectedItemColor: const Color.fromARGB(255, 126, 0, 105),
         onTap: _onItemTapped,
-        ),
+      ),
     );
   }
 }
