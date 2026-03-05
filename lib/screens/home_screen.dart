@@ -19,14 +19,17 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Icon(Icons.message_outlined, color: Colors.white, size: 30),
           ),
         ],
-        toolbarHeight: 80,
+        toolbarHeight: 60,
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 126, 0, 105),
         title: TextField(
           decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+              borderSide: BorderSide.none,
             ),
+            
+            
             filled: true,
             fillColor: Colors.white,
             label: Text(
